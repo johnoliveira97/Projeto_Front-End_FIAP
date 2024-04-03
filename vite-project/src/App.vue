@@ -1,5 +1,6 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Input from '../src/Input.vue'
+
 </script>
 
 <template id="app">
@@ -16,12 +17,22 @@ import HelloWorld from './components/HelloWorld.vue'
     </div>
     <div class="boxes">
       <form name="login-form" action="/login" method="POST">
-        <label class="username">Username or email address
-          <input type="text" name="username"/>
+        <label class="username">e-mail address
+          <Input type="email" 
+          name="email"
+          v-model="email"
+          placeholder="E-mail"/> {{ email }}
         </label>
         <div class="pwd-wrapper">
           <label for="pwd">Password</label>
-          <input id="pwd" name="pwd" />
+          <Input 
+          v-model="password"
+          name="password"
+          type="password"
+          icon="lock"
+          :errors="errors.password"
+          placeholder="Senha"
+          class="password" />
           <a href="#" class="forget-pwd">Forgort password?</a>
         </div>
         <button class="botao">Sign in</button>
